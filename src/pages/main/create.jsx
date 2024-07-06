@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { data } from "../../basa/statebasa";
 import "./list.css"
+import "./create.css"
 
 export function List({ user, open }) {
   return (
@@ -8,7 +9,7 @@ export function List({ user, open }) {
       opacity: open ? 0 : 1
     }} className="list">
       {user.map((item) => (
-        <div key={item.id}>
+        <div className="art" key={item.id}>
           <h2>{item.name}</h2>
           <p>{item.text}</p>
         </div>
@@ -29,31 +30,30 @@ export function CreateState({ handleCreateData, handleUpdateData, newData, close
       width: "100vw",
       pointerEvents: "none"
     }}>
+      <div className="pepe">
+      <h1>Create your own article!</h1>
      <div className="crinp" style={{ 
       pointerEvents: "auto"
       }}> 
       <input
-        placeholder="author of the article"
-        name="autname"
-        value={newData.autname}
-        onChange={(e) => handleCreateData(e)}
-      />
-      <input
+      className="name"
         placeholder="name of the article"
         name="name"
         value={newData.name}
         onChange={(e) => handleCreateData(e)}
       />
-      <input
-        placeholder="text of the article"
-        name="text"
-        value={newData.text}
-        onChange={(e) => handleCreateData(e)}
-      />
+      <textarea
+  className="text"
+  placeholder="text of the article"
+  name="text"
+  value={newData.text}
+  onChange={(e) => handleCreateData(e)}
+/>
       <button className="savebut" onClick={() => {
         handleUpdateData()
         close()
       }}>Save</button>
+      </div>
       </div>
     </div>
   );

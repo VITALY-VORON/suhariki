@@ -2,6 +2,7 @@ import { useState } from "react";
 import { data } from "../../../basa/statebasa";
 import { CreateState, List } from "../../main/create";
 
+
 const Offstate = () => {
 
     const [open, setOpen] = useState(true)
@@ -26,11 +27,13 @@ const Offstate = () => {
 
     return (
         <div>
-            <button onClick={() => setOpen(!open)} style={{
+            <button onClick={() => setOpen(!open)} className="creatbut" style={{
                 position: "absolute",
                 right: 20,
-                top: 20
-            }}>Create</button>
+                top: 20,
+                pointerEvents: "auto",
+                zIndex: 100
+            }}>Create Article</button>
             <List user={user} open={open} />
             {open ? <CreateState handleCreateData={handleCreateData} handleUpdateData={handleUpdateData} newData={newData} close={close} /> : null}
         </div>
